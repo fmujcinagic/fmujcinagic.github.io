@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <nav class="nav">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/writeups/' | relative_url }}">Writeups</a>
+          <a href="{{ '/projects/' | relative_url }}">Security Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      {{ content }}
+    </main>
+
+    <footer class="footer wrap">
+      <p>0xfarism &mdash; {{ site.description }}</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+title: 0xfarism
+email: ""
+description: CTF writeups and practical security project notes.
+url: "https://fmujcinagic.github.io"
+baseurl: ""
+markdown: kramdown
+kramdown:
+  input: GFM
+collections:
+  articles:
+    output: true
+    permalink: /posts/:name/
+exclude:
+  - README.md

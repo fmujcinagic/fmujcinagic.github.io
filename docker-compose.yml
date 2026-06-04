@@ -1,0 +1,19 @@
+services:
+  jekyll:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: faris-jekyll-local:4
+    working_dir: /srv/jekyll
+    command: jekyll serve --host 0.0.0.0 --port 4000 --livereload --force_polling
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    volumes:
+      - ./:/srv/jekyll
+    environment:
+      JEKYLL_ENV: development
+      JEKYLL_UID: "${LOCAL_UID:-1000}"
+      JEKYLL_GID: "${LOCAL_GID:-1000}"
+    stdin_open: true
+    tty: true

@@ -1,0 +1,36 @@
+---
+layout: default
+title: Security Projects
+permalink: /projects/
+---
+<section class="hero">
+  <h1>Security Projects</h1>
+  <p>Project reports and technical articles.</p>
+</section>
+
+<section class="section">
+  {% assign projects = site.articles | where: "post_type", "security-project" | sort: "title" %}
+  {% if projects.size > 0 %}
+    {% assign grouped = projects | group_by: "category" %}
+    {% for group in grouped %}
+      <h2 class="category-title">{{ group.name | default: "Projects" }}</h2>
+      <ul class="post-list">
+        {% for post in group.items %}
+          <li class="card">
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.description | default: post.excerpt | strip_html | truncate: 180 }}</p>
+            <p class="meta">
+              {% for tag in post.tags %}
+                <span class="chip chip-light">{{ tag }}</span>
+              {% endfor %}
+            </p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  {% else %}
+    <div class="card">
+      <h3>No projects published yet</h3>
+    </div>
+  {% endif %}
+</section>

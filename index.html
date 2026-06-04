@@ -1,0 +1,28 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+  <h1>{{ site.title }}</h1>
+  <p>
+    Security engineer and MSc Computer Science student majoring in Information Security.
+    Main interests: system security, penetration testing, red teaming, container &amp; cloud security and
+    threat detection &amp; response.
+</section>
+
+<section class="section">
+  <h2>Latest Posts</h2>
+  {% assign latest = site.articles | sort: "date" | reverse %}
+  <ul class="post-list">
+    {% for post in latest limit:5 %}
+      <li class="card">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncate: 180 }}</p>
+        <p class="meta">
+          {% assign label = post.post_type | replace: "-", " " | capitalize %}
+          <span>{{ label }}</span>
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
