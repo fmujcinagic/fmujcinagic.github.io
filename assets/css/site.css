@@ -231,6 +231,23 @@ body {
   border-radius: 0 6px 6px 0;
 }
 
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  color: var(--muted);
+  transition: color 0.15s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.social-icon:hover {
+  color: var(--accent);
+}
+
 .footer {
   color: var(--muted);
   border-top: 1px solid var(--line);
