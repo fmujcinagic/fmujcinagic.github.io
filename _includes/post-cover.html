@@ -1,0 +1,49 @@
+{% comment %}
+  Renders a post thumbnail.
+  - Uses post.cover_image when set.
+  - Otherwise generates a deterministic typographic SVG cover, tinted per
+    category, so every post has a card image without binary assets.
+{% endcomment %}
+{% assign p = include.post %}
+{% if p.cover_image %}
+  <div class="post-cover">
+    <img src="{{ p.cover_image | relative_url }}" alt="{{ p.title | escape }}" loading="lazy">
+  </div>
+{% else %}
+  {% assign accent = "#d47f2a" %}
+  {% case p.category %}
+    {% when "Research" %}{% assign accent = "#8a6f4e" %}
+  {% endcase %}
+  {% if p.platform %}
+    {% assign cover_label = p.platform %}
+  {% elsif p.tags.first %}
+    {% assign cover_label = p.tags.first %}
+  {% else %}
+    {% assign cover_label = p.category %}
+  {% endif %}
+  {% assign pattern_id = "dots-" | append: p.slug %}
+  {% assign label_len = cover_label | size %}
+  {% if label_len > 16 %}
+    {% assign label_size = 46 %}
+  {% elsif label_len > 11 %}
+    {% assign label_size = 58 %}
+  {% elsif label_len > 7 %}
+    {% assign label_size = 68 %}
+  {% else %}
+    {% assign label_size = 78 %}
+  {% endif %}
+  <div class="post-cover post-cover--generated">
+    <svg viewBox="0 0 1200 675" role="img" aria-label="{{ p.title | escape }}" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="{{ pattern_id }}" width="48" height="48" patternUnits="userSpaceOnUse">
+          <circle cx="3" cy="3" r="1.6" fill="#262624"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="675" fill="#141413"/>
+      <rect width="1200" height="675" fill="url(#{{ pattern_id }})"/>
+      <text x="76" y="150" fill="{{ accent }}" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="26" letter-spacing="8">{{ p.category | upcase }}</text>
+      <line x1="76" y1="470" x2="1124" y2="470" stroke="#2e2e2c" stroke-width="2"/>
+      <text x="76" y="582" fill="#faf9f5" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="{{ label_size }}" letter-spacing="2">{{ cover_label | upcase }}</text>
+    </svg>
+  </div>
+{% endif %}

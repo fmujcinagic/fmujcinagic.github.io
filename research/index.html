@@ -1,0 +1,22 @@
+---
+layout: default
+title: Research/Projects
+permalink: /research/
+---
+<section class="hero">
+  <h1>Research/Projects</h1>
+  <p>Various research, projects and open source contribution that I do in my spare time.</p>
+</section>
+
+<section class="section">
+  {% assign posts = site.articles | where: "category", "Research" | sort: "date" | reverse %}
+  {% if posts.size > 0 %}
+    <div class="card-grid">
+      {% for post in posts %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty">Nothing published here yet.</p>
+  {% endif %}
+</section>

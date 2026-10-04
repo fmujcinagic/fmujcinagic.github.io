@@ -2,6 +2,7 @@
 layout: post
 title: Holo - TryHackMe
 date: 2024-08-29
+description: Writeup for the Holo Corporate network on TryHackMe, an Active Directory and Web-App attack lab covering web exploitation, pivoting, and lateral movement techniques.
 category: CTF
 tags:
   - TryHackMe

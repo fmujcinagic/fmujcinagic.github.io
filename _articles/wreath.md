@@ -2,6 +2,7 @@
 layout: post
 title: Wreath - TryHackMe
 date: 2024-08-22
+description: Writeup for the Wreath network pivoting room on TryHackMe, covering exploitation of public-facing services, internal network pivoting with sshuttle and chisel, and post-exploitation techniques.
 category: CTF
 tags:
   - TryHackMe

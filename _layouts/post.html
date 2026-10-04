@@ -3,21 +3,19 @@ layout: default
 ---
 <article class="post">
   <header class="post-header">
+    <p class="eyebrow">
+      {{ page.category }}{% if page.platform %} &middot; {{ page.platform }}{% endif %}
+    </p>
     <h1>{{ page.title }}</h1>
-    <p class="meta">
-      {% if page.date %}<span>{{ page.date | date: "%Y-%m-%d" }}</span>{% endif %}
-      {% if page.category %}<span class="chip">{{ page.category }}</span>{% endif %}
-      {% if page.tags %}
-        {% for tag in page.tags %}
-          <span class="chip chip-light">{{ tag }}</span>
-        {% endfor %}
-      {% endif %}
+    <p class="post-date">
+      {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% endif %}
+      {% if page.tags %} &middot; {{ page.tags | join: ", " }}{% endif %}
     </p>
   </header>
 
-  {% if page.cover_image %}
-    <img class="cover" src="{{ page.cover_image | relative_url }}" alt="{{ page.title }} cover image">
-  {% endif %}
+  <div class="post-hero">
+    {% include post-cover.html post=page %}
+  </div>
 
   <div class="content">
     {{ content }}

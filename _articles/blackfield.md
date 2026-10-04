@@ -2,6 +2,7 @@
 layout: post
 title: BlackField - HackTheBox
 date: 2024-08-17
+description: Writeup for the BlackField machine on HackTheBox, covering Active Directory enumeration, AS-REP roasting, BloodHound analysis, LSASS dump extraction, SeBackupPrivilege abuse, and NTDS.dit dumping for full domain compromise.
 category: CTF
 tags:
   - HackTheBox

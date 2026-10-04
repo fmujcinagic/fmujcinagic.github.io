@@ -2,6 +2,7 @@
 layout: post
 title: Return - HackTheBox
 date: 2025-01-01
+description: Return is an easy difficulty Windows machine featuring a network printer administration panel that stores LDAP credentials, leading to initial foothold and privilege escalation through service abuse.
 category: CTF
 tags:
   - HackTheBox

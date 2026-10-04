@@ -1,0 +1,12 @@
+{% assign p = include.post %}
+<article class="post-card{% if include.featured %} post-card--featured{% endif %}">
+  <a class="post-card__link" href="{{ p.url | relative_url }}">
+    {% include post-cover.html post=p %}
+    <div class="post-card__body">
+      <p class="post-card__category">{{ p.category }}{% if p.platform %} &middot; {{ p.platform }}{% endif %}</p>
+      <h3 class="post-card__title">{{ p.title }}</h3>
+      <p class="post-card__excerpt">{{ p.description | default: p.excerpt | strip_html | truncate: 150 }}</p>
+      <p class="post-card__meta">{{ p.date | date: "%b %-d, %Y" }}</p>
+    </div>
+  </a>
+</article>
