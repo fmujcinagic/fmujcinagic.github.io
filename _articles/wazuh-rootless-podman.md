@@ -19,7 +19,7 @@ post_type: writeup
 
 # Wazuh rootless on Podman
 
-I was in need to run the Wazuh on RHEL-family distros, and the official deployment story is either native systemd service or Docker deployment. `dockerd` is a root daemon with a root-equivalent socket, adding a user to the `docker` group hands over the host, and Docker is not in the repos while Podman is. So I built the deployment I wanted: the whole single-node Wazuh stack, indexer, manager and dashboard, running entirely as a rootless Podman user under systemd and Quadlet, with no root service and no daemon. I also noticed that the official documentation doesn't provide/reference the integration for Podman container lifecycle, network bandwidth and Keycloak authentication, so I wrote the  decoders, rules and dashboards for those purposes.
+I needed to run the Wazuh on RHEL-family distros, and the official deployment story is either native systemd service or Docker deployment. `dockerd` is a root daemon with a root-equivalent socket, adding a user to the `docker` group hands over the host, and Docker is not in the repos while Podman is. So I built the deployment I wanted: the whole single-node Wazuh stack, indexer, manager and dashboard, running entirely as a rootless Podman user under systemd and Quadlet, with no root service and no daemon. I also noticed that the official documentation doesn't provide/reference the integration for Podman container lifecycle, network bandwidth and Keycloak authentication, so I wrote the  decoders, rules and dashboards for those purposes.
 
 ## Why not Docker
 
