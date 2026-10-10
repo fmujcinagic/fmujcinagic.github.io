@@ -3,24 +3,35 @@ layout: default
 title: Writeups
 permalink: /writeups/
 ---
-<section class="hero">
-  <h1>Writeups</h1>
-  <p>HackTheBox and TryHackMe walkthroughs: enumeration, footholds, privilege escalation, and pivoting.</p>
+<section class="hero hero--page">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <p class="kicker reveal"><span class="pulse" aria-hidden="true"></span>CTF walkthroughs</p>
+  <h1 class="hero-title reveal" style="--d:1">Writeups</h1>
+  <p class="lead reveal" style="--d:2">HackTheBox and TryHackMe walkthroughs: enumeration, footholds, privilege escalation, and pivoting.</p>
 </section>
 
 {% assign writeups = site.articles | where: "category", "CTF" | sort: "date" | reverse %}
 {% if writeups.size > 0 %}
   {% assign grouped = writeups | group_by: "platform" %}
-  {% for group in grouped %}
-    <section class="section">
-      <h2>{{ group.name | default: "CTF" }}</h2>
-      <div class="card-grid">
-        {% for post in group.items %}
+  <section class="section">
+    <div class="filters reveal" role="group" aria-label="Filter writeups by platform">
+      <button type="button" class="filter-chip is-active" data-filter="all">All <span class="count">{{ writeups.size }}</span></button>
+      {% for group in grouped %}
+        {% assign group_name = group.name | default: "CTF" %}
+        <button type="button" class="filter-chip" data-filter="{{ group_name | downcase | replace: ' ', '-' }}">{{ group_name }} <span class="count">{{ group.items.size }}</span></button>
+      {% endfor %}
+    </div>
+    <div class="card-grid">
+      {% for post in writeups %}
+        {% assign platform_key = post.platform | default: "CTF" | downcase | replace: ' ', '-' %}
+        <div class="filter-item reveal" style="--d:{{ forloop.index0 | modulo: 3 }}" data-platform="{{ platform_key }}">
           {% include post-card.html post=post %}
-        {% endfor %}
-      </div>
-    </section>
-  {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
 {% else %}
-  <p class="empty">No writeups yet.</p>
+  <section class="section">
+    <p class="empty">No writeups yet.</p>
+  </section>
 {% endif %}

@@ -1,0 +1,52 @@
+- title: Kernel Taint Tracking — LLVM Compiler Pass
+  category: BSc thesis · Systems security
+  year: "2025"
+  description: >-
+    A proof-of-concept LLVM pass that statically tracks user-controlled taint
+    through the Linux kernel — across function calls, pointer aliasing and
+    dereferencing, nested memory operations and custom out-of-tree modules —
+    where dynamic tools miss rarely-executed paths. Evaluated on 50 synthetic C
+    programs and kernel modules across five categories.
+  metric: F1 0.82 · 19.4 ms per test case
+  note: Paper available on request
+  link: https://github.com/fmujcinagic/llvm-compiler-pass
+
+- title: Wazuh Rootless on Podman + Integration Hub
+  category: Detection engineering
+  year: "2026"
+  description: >-
+    A rootless, daemonless deployment of the full Wazuh stack (indexer, manager,
+    dashboard) as Quadlet-managed systemd user services, driven by one
+    interactive CLI and Ansible. Ships with an integration hub of original
+    decoders, rules and dashboards for Podman lifecycle, network bandwidth and
+    Keycloak authentication monitoring — with test suites.
+  link: https://github.com/fmujcinagic/wazuh-rootless-podman
+
+- title: Flush+Reload on AMD Zen
+  category: Side-channel research
+  year: "2026"
+  description: >-
+    Adaptation of the Flush+Reload cache side channel to AMD Zen's
+    non-inclusive LLC and CCX-partitioned L3, using core-affinity pinning to
+    keep attacker and victim on one CCX, then recovering a square-and-multiply
+    secret bit-by-bit from rdtscp / clflush timing.
+  link: https://github.com/fmujcinagic/flush-reload-ryzen
+
+- title: Heap & ROP Exploitation Lab
+  category: Offensive security
+  year: "2025"
+  description: >-
+    A self-contained playground where each heap and ROP technique ships a
+    vulnerable C/C++ program, a pwntools exploit and a writeup, deployed as a
+    local Docker TCP service — covering tcache, fastbin, unsorted bin, UAF and
+    ret2libc / ret2csu chains.
+  note: Private repository
+
+- title: OWASP ZAP × opencode MCP Integration
+  category: AppSec tooling
+  year: "2026"
+  description: >-
+    Wires OWASP ZAP into the opencode agent runtime through the official ZAP
+    MCP add-on, letting a model drive authenticated web-application scanning
+    through reusable "BugHunter" skills.
+  link: https://github.com/fmujcinagic/owasp-zap-mcp-opencode-integration

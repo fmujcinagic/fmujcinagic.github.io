@@ -11,7 +11,7 @@
   <rect x="360" y="170" width="480" height="340" fill="none" stroke="#6f6d64" stroke-width="1.5" stroke-dasharray="6 6"/>
 
   <!-- corner guards -->
-  <g stroke="#d47f2a" stroke-width="3" stroke-linecap="round" fill="none">
+  <g stroke="#2fb8a6" stroke-width="3" stroke-linecap="round" fill="none">
     <path d="M360 200 L360 170 L390 170"/>
     <path d="M810 170 L840 170 L840 200"/>
     <path d="M840 480 L840 510 L810 510"/>

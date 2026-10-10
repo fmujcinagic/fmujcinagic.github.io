@@ -1,23 +1,60 @@
 ---
 layout: default
 ---
+{% assign peers = site.articles | where: "category", page.category | sort: "date" %}
+{% assign pos = 0 %}
+{% for p in peers %}
+  {% if p.url == page.url %}{% assign pos = forloop.index %}{% endif %}
+{% endfor %}
+{% assign prev_i = pos | minus: 2 %}
+{% assign prev_post = false %}
+{% assign next_post = false %}
+{% if prev_i >= 0 %}{% assign prev_post = peers[prev_i] %}{% endif %}
+{% assign next_post = peers[pos] %}
 <article class="post">
   <header class="post-header">
-    <p class="eyebrow">
-      {{ page.category }}{% if page.platform %} &middot; {{ page.platform }}{% endif %}
+    <p class="eyebrow reveal">
+      <a href="{% if page.category == 'Research' %}{{ '/research/' | relative_url }}{% else %}{{ '/writeups/' | relative_url }}{% endif %}">{{ page.category }}</a>
+      {% if page.platform %}<span class="dot" aria-hidden="true"></span>{{ page.platform }}{% endif %}
     </p>
-    <h1>{{ page.title }}</h1>
-    <p class="post-date">
+    <h1 class="reveal" style="--d:1">{{ page.title }}</h1>
+    <p class="post-date reveal" style="--d:2">
       {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% endif %}
-      {% if page.tags %} &middot; {{ page.tags | join: ", " }}{% endif %}
+      <span class="dot" aria-hidden="true"></span>{{ content | number_of_words | divided_by: 220 | at_least: 1 }} min read
     </p>
   </header>
 
-  <div class="post-hero">
+  <div class="post-hero reveal" style="--d:3">
     {% include post-cover.html post=page %}
   </div>
+
+  <nav class="toc" data-toc hidden aria-label="Table of contents">
+    <p class="toc-title">On this page</p>
+    <ol class="toc-list"></ol>
+  </nav>
 
   <div class="content">
     {{ content }}
   </div>
+
+  {% if prev_post or next_post %}
+    <nav class="post-nav" aria-label="More posts">
+      {% if prev_post %}
+        <a class="prev" href="{{ prev_post.url | relative_url }}">
+          <span class="dir">&larr; Older</span>
+          <span class="post-nav__title">{{ prev_post.title }}</span>
+        </a>
+      {% else %}
+        <span class="post-nav__spacer" aria-hidden="true"></span>
+      {% endif %}
+      {% if next_post %}
+        <a class="next" href="{{ next_post.url | relative_url }}">
+          <span class="dir">Newer &rarr;</span>
+          <span class="post-nav__title">{{ next_post.title }}</span>
+        </a>
+      {% else %}
+        <span class="post-nav__spacer" aria-hidden="true"></span>
+      {% endif %}
+    </nav>
+  {% endif %}
 </article>

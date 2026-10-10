@@ -3,17 +3,21 @@ layout: default
 title: Research/Projects
 permalink: /research/
 ---
-<section class="hero">
-  <h1>Research/Projects</h1>
-  <p>Various research, projects and open source contribution that I do in my spare time.</p>
+<section class="hero hero--page">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <p class="kicker reveal"><span class="pulse" aria-hidden="true"></span>Research &amp; projects</p>
+  <h1 class="hero-title reveal" style="--d:1">Research &amp; Projects</h1>
+  <p class="lead reveal" style="--d:2">Various research, projects and open source work I do in my spare time.</p>
 </section>
 
+{% assign posts = site.articles | where: "category", "Research" | sort: "date" | reverse %}
 <section class="section">
-  {% assign posts = site.articles | where: "category", "Research" | sort: "date" | reverse %}
   {% if posts.size > 0 %}
     <div class="card-grid">
       {% for post in posts %}
-        {% include post-card.html post=post %}
+        <div class="filter-item reveal" style="--d:{{ forloop.index0 | modulo: 3 }}">
+          {% include post-card.html post=post %}
+        </div>
       {% endfor %}
     </div>
   {% else %}

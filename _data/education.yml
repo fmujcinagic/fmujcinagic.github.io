@@ -1,0 +1,18 @@
+- degree: MSc Computer Science — Information Security
+  org: Graz University of Technology
+  unit: Institute of Information Security (ISEC)
+  url: https://www.isec.tugraz.at/
+  period: "2025 – present"
+  detail: >-
+    Specialising in information security, with research interests in
+    confidential computing and system security.
+
+- degree: BSc Computer Science
+  org: Graz University of Technology
+  unit: Institute of Information Security (ISEC)
+  url: https://www.isec.tugraz.at/
+  period: "Graduated 2025"
+  detail: >-
+    Thesis "Kernel Taint Tracking": an LLVM compiler pass for static taint
+    analysis in the Linux kernel, evaluated at F1 0.82 and 19.4 ms per test
+    case.
