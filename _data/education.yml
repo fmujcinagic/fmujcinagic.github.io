@@ -11,7 +11,7 @@
   org: Graz University of Technology
   unit: Institute of Information Security (ISEC)
   url: https://www.isec.tugraz.at/
-  period: "Graduated 2025"
+  period: "Mar 2022 – Sep 2025"
   detail: >-
     Thesis "Kernel Taint Tracking": an LLVM compiler pass for static taint
     analysis in the Linux kernel, evaluated at F1 0.82 and 19.4 ms per test
